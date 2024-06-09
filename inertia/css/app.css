@@ -1,0 +1,48 @@
+@import url(https://fonts.bunny.net/css?family=dancing-script:400,500,600,700|karma:300,400,500,600,700);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  html,
+  body {
+    font-family: 'Karma', serif;
+    font-weight: 400;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .span {
+    font-family: 'Dancing Script', handwriting;
+  }
+}
+.circle {
+  @apply text-white font-bold;
+  border-radius: 8px;
+  padding: 32px;
+  background: linear-gradient(128deg, #d9b99b 0%, #d9c4b3 100%);
+  font-size: 1.1rem;
+}
+.circle3 {
+  background: transparent;
+}
+
+@media screen and (min-width: 768px) {
+  .circle {
+    width: 500px;
+    border-radius: 18% 82% 66% 34% / 42% 30% 70% 58%;
+    padding: 0 28px;
+    height: 500px;
+  }
+  .circle2 {
+    border-radius: 47% 53% 24% 76% / 62% 53% 47% 38%;
+  }
+  .circle3 {
+    border-radius: 30% 53% 24% 76% / 62% 53% 47% 38%;
+  }
+}
