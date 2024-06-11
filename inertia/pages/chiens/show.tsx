@@ -160,7 +160,7 @@ export default function Show(props: Props) {
                 <div className="md:flex-1">
                   <img
                     className="w-full h-[189px] md:h-[500px] object-cover rounded-lg"
-                    src={`/public/uploads/${chien.thumbnail}`}
+                    src={`/uploads/${chien.thumbnail}`}
                     alt={chien.slug}
                   />
                   <p className="underline decoration-wavy decoration-[#C9BA46] mb-20">

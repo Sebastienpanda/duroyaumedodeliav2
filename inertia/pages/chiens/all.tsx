@@ -81,7 +81,7 @@ export default function All() {
             >
               <img
                 className="w-full h-full object-cover"
-                src={`/public/uploads/${file.thumbnail}`}
+                src={`/uploads/${file.thumbnail}`}
                 alt="Gallery de chiot"
               />
             </motion.a>
