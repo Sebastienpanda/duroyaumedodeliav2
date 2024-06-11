@@ -35,7 +35,7 @@ export default class ChiensController {
       })
     }
 
-    await thumbnail?.move(app.makePath('inertia/public/uploads'), {
+    await thumbnail?.move(app.makePath('public/uploads'), {
       name: `${cuid()}.${thumbnail.extname}`,
     })
 

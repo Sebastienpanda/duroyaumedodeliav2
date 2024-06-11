@@ -94,15 +94,15 @@ export default function Show(props: Props) {
           <div className="mt-40">
             <div
               className={
-                chien.sexe === 'Male'
+                chien.sexe === 'Male' && chien.prix === null
                   ? 'flex flex-col md:flex-row gap-4 md:gap-0 items-center md:justify-between p-4 rounded-lg border border-[#B0DEFC] relative mb-24 h-[380px]'
-                  : 'block rounded-lg border relative border-[#f9aad4] mb-24 h-[148px] p-4'
+                  : `block rounded-lg border relative ${chien.prix === null ? 'border-[#f9aad4]' : 'border-[#B0DEFC]'} mb-24 h-[148px] p-4`
               }
             >
               <AnimationWorld
                 text={chien.slug}
                 elementHtml="h1"
-                style={chien.sexe === 'Male' ? '' : 'text-center'}
+                style={chien.sexe === 'Male' && chien.prix === null ? '' : 'text-center'}
               />
               {chien.reproduction === 'Oui' && (
                 <div className="text-center">
@@ -114,7 +114,7 @@ export default function Show(props: Props) {
               )}
               {chien.sexe === 'Male' ? <Male /> : <Female />}
             </div>
-            {chien.sexe === 'Male' ? (
+            {chien.sexe === 'Male' && chien.prix === null ? (
               <div className="md:flex md:flex-col md:justify-center md:items-center md:gap-8">
                 <motion.div
                   variants={{
@@ -153,54 +153,75 @@ export default function Show(props: Props) {
               }}
               initial="hidden"
               whileInView="visible"
-              className="mt-32 lg:mt-0"
+              className="mt-64"
             >
               <AnimationWorld text="Informations complémentaire" style="my-8" elementHtml="h2" />
               <div className="md:flex md:gap-8">
                 <div className="md:flex-1">
                   <img
                     className="w-full h-[189px] md:h-[500px] object-cover rounded-lg"
-                    src={`/inertia/public/uploads/${chien.thumbnail}`}
+                    src={`/public/uploads/${chien.thumbnail}`}
                     alt={chien.slug}
                   />
                   <p className="underline decoration-wavy decoration-[#C9BA46] mb-20">
                     Pédigré des parents sur demande
                   </p>
                 </div>
-                <table className="table-auto w-full md:h-1/2 md:flex-1">
-                  <tbody>
-                    <tr>
-                      <td className="border-[2px]  border-amber-700 px-4 py-2">Couleur:</td>
-                      <td className="border-[2px]  border-amber-700 px-4 py-2">{chien.couleurs}</td>
-                    </tr>
-                    <tr>
-                      <td className="border-[2px]   border-amber-700 px-4 py-2">Puce:</td>
-                      <td className="border-[2px]  border-amber-700 px-4 py-2">{chien.puce}</td>
-                    </tr>
-                    <tr>
-                      <td className="border-[2px]   border-amber-700 px-4 py-2">Tatouage:</td>
-                      <td className="border-[2px]  border-amber-700 px-4 py-2">
-                        {chien.tatouage === '' ? '' : chien.tatouage}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="border-[2px]   border-amber-700 px-4 py-2">LOF:</td>
-                      <td className="border-[2px]  border-amber-700 px-4 py-2">{chien.lof}</td>
-                    </tr>
-                    <tr>
-                      <td className="border-[2px]   border-amber-700 px-4 py-2">Cotation:</td>
-                      <td className="border-[2px]  border-amber-700 px-4 py-2">{chien.cotation}</td>
-                    </tr>
-                    <tr>
-                      <td className="border-[2px]   border-amber-700 px-4 py-2">ADN:</td>
-                      <td className="border-[2px]  border-amber-700 px-4 py-2">{chien.adn}</td>
-                    </tr>
-                    <tr>
-                      <td className="border-[2px]   border-amber-700 px-4 py-2">Tares:</td>
-                      <td className="border-[2px]  border-amber-700 px-4 py-2">{chien.tares}</td>
-                    </tr>
-                  </tbody>
-                </table>
+                {chien.description ? (
+                  <div className="md:flex-1">
+                    <AnimationWorld text="Description" style="my-8" elementHtml="h2" />
+                    <p>{chien.description}</p>
+                    <div className="flex gap-8">
+                      <div>
+                        <AnimationWorld text="Reserver" style="my-8" elementHtml="h6" />
+                        <p>{chien.reserved}</p>
+                      </div>
+                      <div>
+                        <AnimationWorld text="Vendu" style="my-8" elementHtml="h6" />
+                        <p>{chien.vendu}</p>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <table className="table-auto w-full md:h-1/2 md:flex-1">
+                    <tbody>
+                      <tr>
+                        <td className="border-[2px]  border-amber-700 px-4 py-2">Couleur:</td>
+                        <td className="border-[2px]  border-amber-700 px-4 py-2">
+                          {chien.couleurs}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border-[2px]   border-amber-700 px-4 py-2">Puce:</td>
+                        <td className="border-[2px]  border-amber-700 px-4 py-2">{chien.puce}</td>
+                      </tr>
+                      <tr>
+                        <td className="border-[2px]   border-amber-700 px-4 py-2">Tatouage:</td>
+                        <td className="border-[2px]  border-amber-700 px-4 py-2">
+                          {chien.tatouage === '' ? '' : chien.tatouage}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border-[2px]   border-amber-700 px-4 py-2">LOF:</td>
+                        <td className="border-[2px]  border-amber-700 px-4 py-2">{chien.lof}</td>
+                      </tr>
+                      <tr>
+                        <td className="border-[2px]   border-amber-700 px-4 py-2">Cotation:</td>
+                        <td className="border-[2px]  border-amber-700 px-4 py-2">
+                          {chien.cotation}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border-[2px]   border-amber-700 px-4 py-2">ADN:</td>
+                        <td className="border-[2px]  border-amber-700 px-4 py-2">{chien.adn}</td>
+                      </tr>
+                      <tr>
+                        <td className="border-[2px]   border-amber-700 px-4 py-2">Tares:</td>
+                        <td className="border-[2px]  border-amber-700 px-4 py-2">{chien.tares}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                )}
               </div>
             </motion.div>
           </div>

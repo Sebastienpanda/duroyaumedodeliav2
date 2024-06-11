@@ -81,7 +81,7 @@ export default function All() {
             >
               <img
                 className="w-full h-full object-cover"
-                src={`/inertia/public/uploads/${file.thumbnail}`}
+                src={`/public/uploads/${file.thumbnail}`}
                 alt="Gallery de chiot"
               />
             </motion.a>
