@@ -2,7 +2,7 @@ import { Link } from '@inertiajs/react'
 import logo from '~/assets/images/logo.png'
 
 const navigation = {
-  elevages: [{ name: 'Notre élévage', href: '/elevage' }],
+  elevages: [{ name: 'Notre élévage', href: '/elevages' }],
   presentation: [{ name: 'Présentation', href: '#presentation' }],
   actualites: [{ name: 'Nos Actualités', href: '/actualites' }],
   contact: [{ name: 'contact', href: '/contact' }],

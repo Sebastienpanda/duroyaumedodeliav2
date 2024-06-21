@@ -10,7 +10,7 @@ import { Button } from '~/lib/components/ui/button'
 import AnimationWorld from '../animation/animation_world'
 
 const navigation = [
-  { category: 'elevages', href: '/elevage', content: 'Notre élévage' },
+  { category: 'elevages', href: '/elevages', content: 'Notre élévage' },
   { category: 'presentation', href: '#presentation', content: 'Présentation' },
   { category: 'actualites', href: '/actualites', content: 'Nos Actualités' },
   { category: 'contact', href: '/contact', content: 'Contact' },
