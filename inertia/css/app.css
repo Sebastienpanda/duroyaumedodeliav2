@@ -20,6 +20,10 @@
   .span {
     font-family: 'Dancing Script', handwriting;
   }
+  html,
+  body {
+    overflow-x: hidden;
+  }
 }
 .circle {
   @apply text-white font-bold;
